@@ -11,16 +11,16 @@ export default class App extends Component {
       count: 0,
       status:true
     }
-    console.log("contsructor in App")
+    console.log("constructor in App")
   }
  
   componentDidMount(){
-    console.log("compoonentdidmount in App")
+    console.log("componentDidMount in App")
   }
 
 
   shouldComponentUpdate(nextProps,nextState){
-    console.log("Shouldcomponentupdate in App")
+    console.log("ShouldComponentUpdate in App")
     return true
   }
 
