@@ -9,16 +9,24 @@ export default class App extends Component {
 
     this.state={
       count: 0,
-      status:true
+      status:true,
+      data:[]
     }
-    console.log("constructor in App")
+
   }
- 
+
+
   componentDidMount(){
-    console.log("componentDidMount in App")
+    fetch("https://jsonplaceholder.typicode.com/posts")
+    .then(res=>res.json())
+    .then(convertedData=>{
+        this.setState({
+          data:convertedData
+        })
+    })
+    console.log("Fetching data in app")
   }
-
-
+/*  
   shouldComponentUpdate(nextProps,nextState){
     console.log("ShouldComponentUpdate in App")
     return true
@@ -29,13 +37,14 @@ export default class App extends Component {
   }
   componentWillUnmount(){
     console.log("componentWillUnmount in App")
-  }
+  } */
   render() {
-    console.log("render in App")
+   /*  console.log("render in App") */
+ 
     return (
       <div>
         <h1>Lifecycles in React</h1>
-        {this.state.status?<Child count={this.state.count}/>: null } 
+        {this.state.status?<Child data={this.state.data}count={this.state.count}/>: null } 
         <button onClick={()=>this.setState({count:this.state.count+1})}>Click</button>
         <button onClick={()=>this.setState({status:!this.state.status})}>Mount and unMount Child</button>
       </div>
